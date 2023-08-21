@@ -1,15 +1,22 @@
+let counters = document.querySelectorAll('#counter');
+let value = document.querySelector('#value');
+let decrement = document.querySelector(
+  '#counter button[data-action="decrement"]'
+);
+let increment = document.querySelector(
+  '#counter button[data-action="increment"]'
+);
 let counterValue = 0;
-
-const valueEl = document.querySelector('#value');
-const addOneBtn = document.querySelector('[data-action="increment"]');
-const subOneBtn = document.querySelector('[data-action="decrement"]');
-
-addOneBtn.addEventListener('click', () => {
-  counterValue++;
-  valueEl.textContent = counterValue;
-});
-
-subOneBtn.addEventListener('click', () => {
+decrement.addEventListener('click', () => {
   counterValue--;
-  valueEl.textContent = counterValue;
+  value.textContent = counterValue;
 });
+increment.addEventListener('click', () => {
+  counterValue++;
+  value.textContent = counterValue;
+});
+
+decrement.classList.add('buttons');
+
+increment.classList.add('buttons');
+value.classList.add('spans');

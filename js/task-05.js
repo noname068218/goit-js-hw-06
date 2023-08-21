@@ -1,7 +1,13 @@
-const nameInput = document.querySelector('#name-input');
-const nameOutput = document.querySelector('#name-output');
+const inputEl = document.querySelector('#name-input');
+const outputEl = document.querySelector('#name-output');
 
-nameInput.addEventListener('input', event => {
-  nameOutput.textContent = event.currentTarget.value;
-  if (event.currentTarget.value == '') nameOutput.textContent = 'Anonymous';
+inputEl.addEventListener('input', event => {
+  if (inputEl.value === '') {
+    outputEl.textContent = 'Anonymous';
+  } else {
+    outputEl.textContent = event.currentTarget.value;
+  }
 });
+
+inputEl.classList.add('input-css');
+outputEl.classList.add('change-text');

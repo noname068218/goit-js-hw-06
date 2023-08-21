@@ -13,28 +13,22 @@ const images = [
   },
 ];
 
-// Напиши скрипт для створення галереї зображень на підставі масиву даних. HTML містить список ul.gallery.
+const ulGalleryEl = document.querySelector('.gallery');
+ulGalleryEl.style.listStyle = 'none';
+ulGalleryEl.style.display = 'flex';
+ulGalleryEl.style.gap = '50px';
+ulGalleryEl.style.alignItems = 'center';
+ulGalleryEl.style.marginTop = '200px';
+ulGalleryEl.style.marginLeft = '100px';
+ulGalleryEl.style.background = 'rgb(2,0,36)';
 
-// <ul class="gallery"></ul>
+const imageHtml = images
+  .map(
+    element => `
+    <li>
+      <img src="${element.url}" alt="${element.alt}" width="500">
+    </li>`
+  )
+  .join('');
 
-// Використовуй масив об'єктів images для створення елементів <img>, вкладених в <li>. Для створення розмітки використовуй шаблонні рядки і метод insertAdjacentHTML().
-
-// Усі елементи галереї повинні додаватися в DOM за одну операцію додавання.
-// Додай мінімальне оформлення галереї флексбоксами або грідами через CSS класи.
-const makeGalleryCard = cardInfo => {
-  const { url, alt } = cardInfo;
-  const galleryItemEl = `
-  <li class="gallery-item">
-    <img src="${url}" alt="${alt}">
-  </li>
-  `;
-  return galleryItemEl;
-};
-
-const galleryCardArr = images.map(el => makeGalleryCard(el));
-
-console.log(galleryCardArr);
-
-const galleryListEl = document.querySelector('.gallery');
-
-galleryListEl.insertAdjacentHTML('afterbegin', galleryCardArr.join(''));
+ulGalleryEl.insertAdjacentHTML('beforeend', imageHtml);
