@@ -10,5 +10,14 @@
 //     .toString(16)
 //     .padStart(6, 0)}`;
 // }
+// const saveBtn = document.querySelector(
+//   '#controls button[data-action="create"]'
+// );
+
+// const closeBtn = document.querySelector(
+//   '#controls button[data-action="destroy"]'
+// );
+// const input = document.querySelector('#controls input');
+// const boxesContainer = document.querySelector('#boxes');
 
 // Створи функцію destroyBoxes(), яка очищає вміст div#boxes, у такий спосіб видаляючи всі створені елементи.
