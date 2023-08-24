@@ -5,14 +5,36 @@
 // Розміри найпершого <div> - 30px на 30px.
 // Кожен елемент після першого повинен бути ширшим і вищим від попереднього на 10px.
 // Всі елементи повинні мати випадковий колір фону у форматі HEX. Використовуй готову функцію getRandomHexColor для отримання кольору.
-// function getRandomHexColor() {
-//   return `#${Math.floor(Math.random() * 16777215)
-//     .toString(16)
-//     .padStart(6, 0)}`;
-// }
-// const saveBtn = document.querySelector(
-//   '#controls button[data-action="create"]'
-// );
+const inputEl = document.querySelector('input[type="number"]');
+const createBtn = document.querySelector('button[data-create]');
+const destroyBtn = document.querySelector('button[data-destroy]');
+const boxesContainer = document.querySelector('#boxes');
+
+createBtn.addEventListener('click', createBoxes);
+destroyBtn.addEventListener('click', destroyBoxes);
+
+function createBoxes() {
+  const amount = inputEl.value;
+  const initialSize = 30;
+
+  for (let i = 0; i < amount; i++) {
+    const box = document.createElement('div');
+    box.style.width = `${initialSize + i * 10}px`;
+    box.style.height = `${initialSize + i * 10}px`;
+    box.style.backgroundColor = getRandomHexColor();
+    boxesContainer.appendChild(box);
+  }
+}
+
+function destroyBoxes() {
+  boxesContainer.innerHTML = '';
+}
+
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, '0')}`;
+}
 
 // const closeBtn = document.querySelector(
 //   '#controls button[data-action="destroy"]'
